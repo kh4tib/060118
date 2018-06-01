@@ -1,0 +1,71 @@
+// Global Styles
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+// Variables
+$size: 10rem;
+$duration: 3s;
+
+// Main Styles
+
+.main {
+    width: 100%;
+    height: 100%;
+    background: #161616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li { 
+    width: $size;
+    height: $size;
+    position: absolute;
+    border: 2px solid slateblue;  
+    list-style-type: none;
+    opacity: 0;
+    animation: animation-name $duration linear infinite;    
+    box-shadow: 0px 2px 4px 16px rgba($color:#000, $alpha:.5);
+    }    
+}
+
+@for $i from 1 through 10 {
+    li:nth-child(#{$i}) {
+        animation-delay: $i * ($duration / 10);
+    }
+}
+
+@keyframes animation-name {
+    0% {
+        transform: scale(0);
+        border-radius: $size;
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(2);
+        opacity: 1;
+
+    }
+
+    100% {
+        transform: scale(4);
+        border-radius: $size/6;
+        opacity: 0;
+    }
+}
